@@ -7,11 +7,12 @@ import SituationInput from './SituationInput';
 import Checklist from './Checklist';
 import TaskDetail from './TaskDetail';
 import AnchorGlyph from './AnchorGlyph';
+import LoadingScreen from './LoadingScreen';
 
-type View = 'landing' | 'input' | 'checklist' | 'task';
+type View = 'loading' | 'landing' | 'input' | 'checklist' | 'task';
 
 export default function AppShell() {
-  const [view, setView] = useState<View>('landing');
+  const [view, setView] = useState<View>('loading');
   const [situationInput, setSituationInput] = useState<string>('');
   const [tasks, setTasks] = useState<Task[]>([]);
   const [selectedTaskId, setSelectedTaskId] = useState<string | null>(null);
@@ -82,6 +83,11 @@ export default function AppShell() {
   }
 
   const selectedTask = tasks.find((t) => t.id === selectedTaskId) ?? null;
+
+  // Loading screen
+  if (view === 'loading') {
+    return <LoadingScreen onDone={() => setView('landing')} />;
+  }
 
   // Landing page — full page marketing view
   if (view === 'landing') {

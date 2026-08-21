@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
     const genAI = new GoogleGenerativeAI(apiKey);
     const model = genAI.getGenerativeModel({
-      model: 'gemini-3.6-flash',
+      model: 'gemini-3.5-flash-lite',
       systemInstruction:
         'You are a calm, compassionate assistant helping someone handle administrative tasks after losing a loved one.',
     });

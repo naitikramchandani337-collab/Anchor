@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-3.6-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-3.5-flash-lite' });
 
     const prompt = `You are helping someone draft a real letter or email for the following task: "${taskTitle}" — described as: "${taskDescription}"
 Their situation: "${userInput}"
